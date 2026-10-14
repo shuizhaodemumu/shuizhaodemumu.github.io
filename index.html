@@ -812,6 +812,14 @@
       }
     }
   </style>
+<style>
+#ble-feature > div:last-child {flex:0 1 240px;min-width:0}
+#ble-feature .banner-text {flex:1;min-width:0}
+#ble-feature a {color:var(--accent-em);font-size:.8rem;text-decoration:none;overflow-wrap:anywhere}
+#ble-feature a:hover {text-decoration:underline}
+#ble-feature a:focus-visible {outline:2px solid var(--accent-em);outline-offset:4px}
+@media(max-width:860px){#ble-feature > div:last-child {flex:0 1 auto}}
+</style>
 </head>
 <body>
 
@@ -1949,9 +1957,10 @@ Object.entries(BLE_CASE_DATA).forEach(([lang,project])=>{
  if(!RESUME_DATA[lang].projects.some(p=>p.id===project.id)) RESUME_DATA[lang].projects.push(project);
 });
 const bleBanner=document.createElement('div');
-bleBanner.className='terminal-card';
+bleBanner.className='feature-banner rust-feature';
+bleBanner.id='ble-feature';
 bleBanner.style.marginTop='18px';
-bleBanner.innerHTML='<div class="card-title" id="ble-feature-title"></div><p id="ble-feature-sub" style="margin:10px 0;color:var(--text-muted)"></p><div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center"><button type="button" class="btn-detail" data-detail="ble-workshop" aria-haspopup="dialog" id="ble-feature-detail"></button><a href="https://github.com/shuizhaodemumu/ble-workshop" target="_blank" rel="noopener noreferrer" id="ble-source"></a><a href="https://github.com/shuizhaodemumu/ble-workshop/releases/latest" target="_blank" rel="noopener noreferrer" id="ble-download"></a></div>';
+bleBanner.innerHTML='<div class="banner-text"><h3 id="ble-feature-title"></h3><p id="ble-feature-sub"></p></div><div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center"><button type="button" class="btn-detail" style="width:auto;padding:10px 18px" data-detail="ble-workshop" aria-haspopup="dialog" id="ble-feature-detail"></button><a href="https://github.com/shuizhaodemumu/ble-workshop" target="_blank" rel="noopener noreferrer" id="ble-source"></a><a href="https://github.com/shuizhaodemumu/ble-workshop/releases/latest" target="_blank" rel="noopener noreferrer" id="ble-download"></a></div>';
 document.querySelector('.screen[data-section="0"]').append(bleBanner);
 
 const renderBeforeBle=renderContent;
